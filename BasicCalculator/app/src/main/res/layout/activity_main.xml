@@ -3,14 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:gravity="center">
 
         <EditText
@@ -18,14 +18,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="Første tal" />
+            android:hint="First number"
+            android:textSize="25dp"
+            android:ems="7"/>
 
         <EditText
             android:id="@+id/secondNumberEditText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:inputType="number"
-            android:hint="Andet tal" />
+            android:hint="Second number"
+            android:textSize="25dp"
+            android:ems="7"/>
 
     </LinearLayout>
 
@@ -38,25 +42,29 @@
             android:id="@+id/additionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="+" />
+            android:text="+"
+            android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/subtractionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="-" />
+            android:text="-"
+            android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/multiplicationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="*" />
+            android:text="*"
+            android:layout_margin="5dp"/>
 
         <Button
             android:id="@+id/divisionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="/" />
+            android:text="/"
+            android:layout_margin="5dp"/>
 
     </LinearLayout>
 
@@ -65,6 +73,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:hint="Result..."/>
 
 </LinearLayout>
