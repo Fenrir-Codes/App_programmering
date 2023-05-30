@@ -11,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:gravity="center">
+        android:gravity="center"
+        >
 
         <EditText
             android:id="@+id/firstNumberEditText"
@@ -20,7 +21,8 @@
             android:inputType="number"
             android:hint="First number"
             android:textSize="25dp"
-            android:ems="7"/>
+            android:ems="7"
+            />
 
         <EditText
             android:id="@+id/secondNumberEditText"
@@ -29,42 +31,48 @@
             android:inputType="number"
             android:hint="Second number"
             android:textSize="25dp"
-            android:ems="7"/>
+            android:ems="7"
+            />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        >
 
         <Button
             android:id="@+id/additionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="+"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            />
 
         <Button
             android:id="@+id/subtractionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="-"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            />
 
         <Button
             android:id="@+id/multiplicationButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="*"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            />
 
         <Button
             android:id="@+id/divisionButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="/"
-            android:layout_margin="5dp"/>
+            android:layout_margin="5dp"
+            />
 
     </LinearLayout>
 
@@ -74,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="24sp"
-        android:hint="Result..."/>
+        android:hint="Result..."
+        />
 
 </LinearLayout>
