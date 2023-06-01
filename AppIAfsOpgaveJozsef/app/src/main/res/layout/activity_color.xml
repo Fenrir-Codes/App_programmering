@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ColorActivity"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose Color"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_margin="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txtColor"
+        android:layout_width="390dp"
+        android:layout_height="50dp"
+        android:layout_margin="10dp"
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Spinner
+            android:id="@+id/spnFirst"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+
+            />
+
+        <Spinner
+            android:id="@+id/spnSecond"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:focusedByDefault="false"
+            />
+
+        <Spinner
+            android:id="@+id/spnThird"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnSendColor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Send Color"/>
+
+
+</LinearLayout>
