@@ -1,5 +1,6 @@
 package com.example.appi_afsopgave_jozsef;
 
+//imports
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +15,11 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //A launcher for a previously-prepared call to start the process of executing
     ActivityResultLauncher<Intent> nameActivityLauncher;
     ActivityResultLauncher<Intent> colorActivityLauncher;
 
+    //Initialize objects
     Button btnGetName;
     Button btnGetColor;
     TextView txtName;
@@ -72,6 +75,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         );
     }
 
+    //Broadcast with intent
     @Override
     public void onClick(View view) {
         Intent intent = new Intent(MainActivity.this, ColorActivity.class);

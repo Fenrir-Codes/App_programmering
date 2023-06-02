@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 public class ColorActivity extends AppCompatActivity implements View.OnClickListener {
 
+    //Initialize Objects
     Intent intent;
 
     Button btnSendColor;
@@ -29,6 +30,7 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
     String thirdChoice;
     String hexColor;
 
+    //color values arrays
     String[] firstspn = {"00", "10", "20", "30", "40", "50", "60", "70", "80", "90", "A0", "B0", "C0", "D0", "E0", "F0", "FF"};
     String[] secondspn = {"00", "10", "20", "30", "40", "50", "60", "70", "80", "90", "A0", "B0", "C0", "D0", "E0", "F0", "FF"};
     String[] thirdspn = {"00", "10", "20", "30", "40", "50", "60", "70", "80", "90", "A0", "B0", "C0", "D0", "E0", "F0", "FF"};
@@ -49,15 +51,18 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
         //Initialize Intent component
         intent = getIntent();
 
+        //Array adapters for color values
+        //red values
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, firstspn);
         spnFirst.setAdapter(adapter);
-
+        //green values
         ArrayAdapter<String> adapter1 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, secondspn);
         spnSecond.setAdapter(adapter1);
-
+        //blue values
         ArrayAdapter<String> adapter2 = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, thirdspn);
         spnThird.setAdapter(adapter2);
 
+        //first color choice
         spnFirst.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -69,6 +74,7 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //second color choice
         spnSecond.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -80,6 +86,7 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        //Third color cloice
         spnThird.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
@@ -94,13 +101,10 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             public void onNothingSelected(AdapterView<?> adapterView) {
 
             }
-
         });
-
-
-
     }
 
+    //Button to send color value
     @Override
     public void onClick(View view) {
         intent.putExtra("txtColorToMain", hexColor);
