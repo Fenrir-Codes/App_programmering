@@ -1,6 +1,5 @@
 package com.example.appi_afsopgave_jozsef;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -57,23 +56,18 @@ public class NameActivity extends AppCompatActivity implements RadioGroup.OnChec
     }
 
     private void isCheckedId(int checkedId) {
-        switch (checkedId) {
-            case R.id.mother:
-                txtName.setText("Mother´s name:");
-                send = "Mother´s name:";
-                break;
-            case R.id.father:
-                txtName.setText("Father´s name:");
-                send = "Father´s name:";
-                break;
-            case R.id.cat:
-                txtName.setText("Cat´s name:");
-                send = "Cat´s name:";
-                break;
-            case R.id.dog:
-                txtName.setText("Dog´s name:");
-                send = "Dog´s name:";
-                break;
+        if (checkedId == R.id.mother_id) {
+            txtName.setText("Mother's name:");
+            send = "Mother's name:";
+        } else if (checkedId == R.id.father_id) {
+            txtName.setText("Father's name:");
+            send = "Father's name:";
+        } else if (checkedId == R.id.cat_id) {
+            txtName.setText("Cat's name:");
+            send = "Cat's name:";
+        } else if (checkedId == R.id.dog_id) {
+            txtName.setText("Dog's name:");
+            send = "Dog's name:";
         }
     }
 }

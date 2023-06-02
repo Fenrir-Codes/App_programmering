@@ -38,6 +38,7 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_color);
 
+        //Initialize
         btnSendColor = findViewById(R.id.btnSendColor);
         btnSendColor.setOnClickListener(this);
         spnFirst = findViewById(R.id.spnFirst);
@@ -45,6 +46,7 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
         spnThird = findViewById(R.id.spnThird);
         txtColor = findViewById(R.id.txtColor);
 
+        //Initialize Intent component
         intent = getIntent();
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, firstspn);
@@ -60,13 +62,10 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 firstChoice = adapterView.getItemAtPosition(position).toString();
-
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
@@ -74,12 +73,10 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 secondChoice = adapterView.getItemAtPosition(position).toString();
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-
             }
         });
 
