@@ -25,9 +25,9 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
     Spinner spnSecond;
     Spinner spnThird;
     TextView txtColor;
-    String firstChoice;
-    String secondChoice;
-    String thirdChoice;
+    String firstChoice = "00";
+    String secondChoice = "00";
+    String thirdChoice = "00";
     String hexColor;
 
     //color values arrays
@@ -67,6 +67,8 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 firstChoice = adapterView.getItemAtPosition(position).toString();
+                hexColor = "#" + firstChoice + secondChoice + thirdChoice;
+                txtColor.setBackgroundColor(Color.parseColor(hexColor));
             }
 
             @Override
@@ -79,6 +81,8 @@ public class ColorActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
                 secondChoice = adapterView.getItemAtPosition(position).toString();
+                hexColor = "#" + firstChoice + secondChoice + thirdChoice;
+                txtColor.setBackgroundColor(Color.parseColor(hexColor));
             }
 
             @Override
