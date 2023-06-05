@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:gravity="center_horizontal">
+    android:gravity="center_horizontal"
+    android:background="#FFFFFF"> //setting app Bg color
 
+    //text on top
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,6 +17,7 @@
         android:layout_margin="10dp"
         />
 
+    //Button get Name
     <Button
         android:id="@+id/btnGetName"
         android:layout_width="wrap_content"
@@ -24,10 +26,12 @@
         android:layout_margin="10dp"
         />
 
+    //Layout
     <LinearLayout
         android:id="@+id/layOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
+            //Txt view text Type id
         <TextView
             android:id="@+id/txtType"
             android:layout_width="wrap_content"
@@ -35,7 +39,7 @@
             android:layout_margin="10dp"
             android:textSize="20dp"
             />
-
+        //txt view Name id
         <TextView
             android:id="@+id/txtName"
             android:layout_width="wrap_content"
@@ -46,13 +50,12 @@
             />
     </LinearLayout>
 
+    // Button get color
     <Button
         android:id="@+id/btnGetColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Get ones color"
         android:layout_margin="10dp"
-
         />
-
 </LinearLayout>

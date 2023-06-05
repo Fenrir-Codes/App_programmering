@@ -6,8 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".ColorActivity"
     android:gravity="center_horizontal"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#FFFFFF">
 
+    //text on top
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,49 +18,63 @@
         android:gravity="center"
         android:layout_margin="10dp"
         />
-
+    //Color box on the top as txt view
     <TextView
         android:id="@+id/txtColor"
         android:layout_width="390dp"
-        android:layout_height="50dp"
-        android:layout_margin="10dp"
-
+        android:layout_height="80dp"
+        android:layout_margin="5dp"
+        android:text="Choosen color"
+        android:textSize="25dp"
+        android:gravity="center"
         />
-
+    //Layout
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        //txt red
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Red"
+            />
+        //spinner red
         <Spinner
             android:id="@+id/spnFirst"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+        //txt green
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-
-            />
-
+            android:text="Green"
+           />
+        spinner green
         <Spinner
             android:id="@+id/spnSecond"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+           />
+        //txt blue
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:focusedByDefault="false"
-            />
-
+            android:text="Blue"
+             />
+        spinner blue
         <Spinner
             android:id="@+id/spnThird"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            />
-
+             />
     </LinearLayout>
 
+    //Button send color value
     <Button
         android:id="@+id/btnSendColor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Send Color"/>
-
-
 </LinearLayout>

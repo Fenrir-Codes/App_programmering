@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    tools:context=".NameActivity">
+    tools:context=".NameActivity"
+    android:background="#FFFFFF">
 
 
     <TextView
@@ -26,14 +27,14 @@
             android:layout_height="wrap_content">
 
             <RadioButton
-                android:id="@+id/mother"
+                android:id="@+id/mother_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mother"
                 android:textSize="15dp" />
 
             <RadioButton
-                android:id="@+id/father"
+                android:id="@+id/father_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Father"
@@ -41,7 +42,7 @@
             />
 
             <RadioButton
-                android:id="@+id/cat"
+                android:id="@+id/cat_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cat"
@@ -49,7 +50,7 @@
             />
 
             <RadioButton
-                android:id="@+id/dog"
+                android:id="@+id/dog_id"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Dog"
