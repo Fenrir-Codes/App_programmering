@@ -1,70 +1,79 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/theLayout"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:id="@+id/theLayout"
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
+        android:textSize="30dp"
         android:text="Sensors"
         />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10px"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="XY angle: "
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="XY: "/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:id="@+id/txtXY"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="XY: "/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10px"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="XZ angle: "
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="XZ: "/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:id="@+id/txtXZ"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="XZ: "/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10px"
-        android:orientation="horizontal">
+        android:orientation="horizontal" >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
-            android:text="ZY angle: "
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:layout_weight="1"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="ZY: "/>
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="0px"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:id="@+id/txtZY"
-            android:textAppearance="?android:attr/textAppearanceLarge"/>
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:text="ZY: "/>
     </LinearLayout>
+
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/btnShowBall"
-        android:text="Show Ball"/>
+        android:layout_width="411dp"
+        android:layout_height="wrap_content"
+        android:text="Show Ball" />
+
 </LinearLayout>
