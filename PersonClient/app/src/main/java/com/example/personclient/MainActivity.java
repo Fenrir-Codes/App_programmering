@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 import retrofit2.Call;
@@ -24,8 +26,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     //listview
     ListView list;
-    List<Person> personAll;
+    List<Person> listOfAll;
     FloatingActionButton btnAdd;
+
+    TextView appTitle;
 
     private static final int DELETE_PERSON_REQUEST_CODE = 2;
 
@@ -41,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         list.setOnItemClickListener(this);
         btnAdd = findViewById(R.id.btnAdd);
         btnAdd.setOnClickListener(this);
+        appTitle = findViewById(R.id.appTitle);
 
         //Person service instialize
         PersonService personService = ServiceBuilder.buildService(PersonService.class);
@@ -59,11 +64,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         int requestCode = result.getData()
                                 .getIntExtra("requestCode", 0);
                         if (requestCode == DELETE_PERSON_REQUEST_CODE) {
-                            personAll.remove(updatedPerson);
+                            listOfAll.remove(updatedPerson);
                         } else {
-                            for (int i = 0; i < personAll.size(); i++) {
-                                if (personAll.get(i).getId() == updatedPerson.getId()) {
-                                    personAll.set(i, updatedPerson);
+                            for (int i = 0; i < listOfAll.size(); i++) {
+                                if (listOfAll.get(i).getId() == updatedPerson.getId()) {
+                                    listOfAll.set(i, updatedPerson);
                                     break;
                                 }
                             }
@@ -79,9 +84,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         // update list with the new person
                         Person newPerson = (Person) result.getData().
                                 getSerializableExtra("newPerson");
-                        personAll.add(newPerson);
+                        listOfAll.add(newPerson);
                         PersonAdapter adapter =
-                                new PersonAdapter(personAll, MainActivity.this);
+                                new PersonAdapter(listOfAll, MainActivity.this);
                         list.setAdapter(adapter);
                     }
                 }
@@ -91,15 +96,16 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         requestAll.enqueue(new Callback<List<Person>>() {
             @Override
             public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
-                personAll = response.body();
+                listOfAll = response.body();
                 PersonAdapter adapter =
-                        new PersonAdapter(personAll, MainActivity.this);
+                        new PersonAdapter(listOfAll, MainActivity.this);
                 list.setAdapter(adapter);
 
             }
             @Override
             public void onFailure(Call<List<Person>> call, Throwable t) {
-                Log.d("Person Error: ", t.getMessage());
+                appTitle.setText("Error" + t.getMessage());
+                //Log.d("Person Error: ", t.getMessage());
             }
 
         });
@@ -109,7 +115,7 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
     //onclick an item
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-        Person person = personAll.get(position);
+        Person person = listOfAll.get(position);
         Intent intent = new Intent(MainActivity.this, PersonView.class);
         intent.putExtra("person", person);
         intent.putExtra("requestCode", 1);
@@ -128,9 +134,9 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             // this will run if the request to the server successfull
             @Override
             public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
-                personAll = response.body();
+                listOfAll = response.body();
                 //Make an adapter and set fill listview
-                PersonAdapter adapter = new PersonAdapter(personAll, MainActivity.this);
+                PersonAdapter adapter = new PersonAdapter(listOfAll, MainActivity.this);
                 list.setAdapter(adapter);
             }
             //if fails the call then show error message

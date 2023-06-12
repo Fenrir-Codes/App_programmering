@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#000000"
     android:gravity="center_horizontal"
     android:orientation="vertical"
     tools:context=".NewPerson">
@@ -12,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add new Person"
-        android:textColor="#008484"
+        android:textColor="@color/white"
         android:textSize="30dp" />
 
     <LinearLayout
@@ -33,7 +34,7 @@
                 android:layout_marginVertical="20dp"
                 android:layout_marginBottom="20dp"
                 android:text="Name: "
-                android:textColor="#008484"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
 
             <TextView
@@ -41,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Tlf: "
-                android:textColor="#008484"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
 
             <TextView
@@ -49,7 +50,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="20dp"
                 android:text="Job: "
-                android:textColor="#008484"
+                android:textColor="@color/white"
                 android:textSize="20dp" />
         </LinearLayout>
 
@@ -64,25 +65,25 @@
                 android:id="@+id/editName"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textColor="#008484" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/editTlf"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textColor="#008484" />
+                android:textColor="@color/white" />
 
             <EditText
                 android:id="@+id/editJob"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
-                android:textColor="#008484" />
+                android:textColor="@color/white" />
 
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:layout_width="350dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="left"
@@ -94,16 +95,9 @@
             android:layout_marginLeft="15dp"
             android:layout_marginTop="5dp"
             android:text="Hair color: "
-            android:textColor="#008484"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            >
-
-        </RelativeLayout>
 
         <Spinner
             android:id="@+id/spnHairColor"
@@ -113,38 +107,45 @@
             android:layout_marginTop="5dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="5dp"
-            android:gravity="center"/>
+            android:gravity="center"
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        >
+        android:layout_margin="15dp">
+
         <RadioGroup
             android:id="@+id/rbGroup"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            >
+            android:textColor="@color/white">
+
             <RadioButton
                 android:id="@+id/rbtCat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Cat"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white" />
+
             <RadioButton
                 android:id="@+id/rbtDog"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Dog"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white" />
+
             <RadioButton
                 android:id="@+id/rbtBird"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:text="Bird"
-                android:layout_margin="10dp"/>
+                android:textColor="@color/white" />
         </RadioGroup>
     </LinearLayout>
 
@@ -161,23 +162,23 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="Set favorit"
-                android:textColor="#008484"
-                android:textSize="20dp"
-                android:layout_marginTop="10dp"/>
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
             <ToggleButton
                 android:id="@+id/btnIsFavorit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp" />
         </LinearLayout>
 
         <TextView
             android:id="@+id/txtSaved"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#008484"/>
+            android:textColor="@color/white" />
     </LinearLayout>
 
     <LinearLayout
@@ -189,15 +190,15 @@
             android:id="@+id/btnSave"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Save"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:text="Save" />
 
         <Button
             android:id="@+id/btnCancel"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:text="Return"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            android:text="Return" />
     </LinearLayout>
 
 </LinearLayout>

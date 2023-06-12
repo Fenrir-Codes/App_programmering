@@ -15,6 +15,9 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
+
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -100,6 +103,7 @@ public class NewPerson extends AppCompatActivity {
                             returnIntent.putExtra("newPerson", savedPerson);
                             setResult(Activity.RESULT_OK, returnIntent);
                             finish();
+
                         }
                     }
 
@@ -111,7 +115,9 @@ public class NewPerson extends AppCompatActivity {
                 });
 
                 finish();
+                personService.getAllPerson();
             }
+     ;
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {

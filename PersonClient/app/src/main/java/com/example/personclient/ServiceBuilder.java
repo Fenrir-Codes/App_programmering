@@ -5,7 +5,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ServiceBuilder {
 
-    private static final String URL = "http://localhost:8080/PersonWebApi/api/";
+
+    //192.168.0.193
+    //"http://localhost:8080/PersonWebApi/api/"
+    private static final String URL = "http://192.168.0.193:8080/PersonWebApi/api/";
     private static Retrofit.Builder builder =
             new Retrofit.Builder().baseUrl(URL)
                     .addConverterFactory(GsonConverterFactory.create());
