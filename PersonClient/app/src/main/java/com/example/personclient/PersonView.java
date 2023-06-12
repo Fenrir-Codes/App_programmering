@@ -1,24 +1,18 @@
 package com.example.personclient;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.ToggleButton;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -33,20 +27,20 @@ public class PersonView extends AppCompatActivity {
     RadioButton rbtDog;
     RadioButton rbtBird;
     TextView txtUpdated;
-    ToggleButton tbtnIsFavorit;
+    ToggleButton toggleFavorit;
 
-    String[] hairColor = {"Blond", "Sort", "Brun", "Gråt"};
+    String[] hairColor = {"Blond", "Black", "Brown", "Gray"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_person_view);
 
-        EditText edtName = findViewById(R.id.editName);
-        EditText edtTlf = findViewById(R.id.editTlf);
-        EditText edtJob = findViewById(R.id.editJob);
+        EditText editName = findViewById(R.id.editName);
+        EditText editTlf = findViewById(R.id.editTlf);
+        EditText editJob = findViewById(R.id.editJob);
         spnHairColor = findViewById(R.id.spnHairColor);
-        tbtnIsFavorit = findViewById(R.id.btnIsFavorit);
+        toggleFavorit = findViewById(R.id.btnIsFavorit);
         txtUpdated = findViewById(R.id.txtUpdated);
 
         rbtCat = findViewById(R.id.rbtCat);
@@ -110,9 +104,7 @@ public class PersonView extends AppCompatActivity {
                     pet = 3;
                 }
 
-                boolean isFavorit = tbtnIsFavorit.isChecked();
-
-                // Opdatere person objektet med nye værdier
+                boolean isFavorit = toggleFavorit.isChecked();
                 person.setName(name);
                 person.setTlf(tlf);
                 person.setJob(job);
@@ -126,11 +118,10 @@ public class PersonView extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<Void> call, Response<Void> response) {
                         if (response.isSuccessful()) {
-                            txtUpdated.setText("Person opdateret");
+                            txtUpdated.setText("Person updated");
                             Intent resultIntent = new Intent();
                             resultIntent.putExtra("person", person);
                             setResult(Activity.RESULT_OK, resultIntent);
-                            Log.d("Opdateret navn", person.getName());
                             txtUpdated.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -149,7 +140,7 @@ public class PersonView extends AppCompatActivity {
             }
         });
 
-        // Sætter en adapter på spinneren til hårfarve
+        // Attaches an adapter to the spinner for hair dye
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
                 com.google.android.material.R.layout.support_simple_spinner_dropdown_item, hairColor);
         spnHairColor.setAdapter(adapter);
@@ -158,29 +149,29 @@ public class PersonView extends AppCompatActivity {
         person = (Person) intent.getSerializableExtra("person");
 
         if (person != null) {
-            edtName.setText(person.getName());
-            // Hvis det er en int skal den konverteres til en string, det kan gøres ved at sætte "" foran
-            edtTlf.setText("" + person.getTlf());
-            edtJob.setText(person.getJob());
+            editName.setText(person.getName());
+            // If it is an int, it must be converted to
+            // a string, this can be done by putting "" in front
+            editTlf.setText("" + person.getTlf());
+            editJob.setText(person.getJob());
 
             int hairColorIndex = person.getHairColor();
             String hcStr = hairColor[hairColorIndex];
             int spnPos = adapter.getPosition(hcStr);
             spnHairColor.setSelection(spnPos);
-
-            tbtnIsFavorit.setChecked(person.getFavorit());
+            toggleFavorit.setChecked(person.getFavorit());
         }
 
         int pet = Integer.parseInt(person.getPet());
         switch (pet) {
             case 1:
-                rbtKat.setChecked(true);
+                rbtCat.setChecked(true);
                 break;
             case 2:
-                rbtHund.setChecked(true);
+                rbtDog.setChecked(true);
                 break;
             case 3:
-                rbtFugl.setChecked(true);
+                rbtBird.setChecked(true);
                 break;
             default:
                 break;

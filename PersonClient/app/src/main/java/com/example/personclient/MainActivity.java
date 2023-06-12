@@ -54,8 +54,10 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                 result -> {
                     if (result.getResultCode() == Activity.RESULT_OK) {
                         // update a person in the list
-                        Person updatedPerson = (Person) result.getData().getSerializableExtra("person");
-                        int requestCode = result.getData().getIntExtra("requestCode", 0);
+                        Person updatedPerson = (Person) result.getData()
+                                .getSerializableExtra("person");
+                        int requestCode = result.getData()
+                                .getIntExtra("requestCode", 0);
                         if (requestCode == DELETE_PERSON_REQUEST_CODE) {
                             personAll.remove(updatedPerson);
                         } else {
@@ -78,7 +80,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
                         Person newPerson = (Person) result.getData().
                                 getSerializableExtra("newPerson");
                         personAll.add(newPerson);
-                        PersonAdapter adapter = new PersonAdapter(personAll, MainActivity.this);
+                        PersonAdapter adapter =
+                                new PersonAdapter(personAll, MainActivity.this);
                         list.setAdapter(adapter);
                     }
                 }
@@ -89,7 +92,8 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             @Override
             public void onResponse(Call<List<Person>> call, Response<List<Person>> response) {
                 personAll = response.body();
-                PersonAdapter adapter = new PersonAdapter(personAll, MainActivity.this);
+                PersonAdapter adapter =
+                        new PersonAdapter(personAll, MainActivity.this);
                 list.setAdapter(adapter);
 
             }

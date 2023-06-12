@@ -1,9 +1,0 @@
-package dk.tec.jaj;
-
-public class AnalyseRequest {
-	
-	public AnalyseRequest(String string)
-	{
-		
-	}
-}

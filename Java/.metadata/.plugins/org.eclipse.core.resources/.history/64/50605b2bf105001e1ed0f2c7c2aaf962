@@ -1,7 +1,0 @@
-package dk.tec.jaj;
-
-public enum Match {
-	MatchElevid,
-	MatrchElev,
-	NoMAtch
-}
