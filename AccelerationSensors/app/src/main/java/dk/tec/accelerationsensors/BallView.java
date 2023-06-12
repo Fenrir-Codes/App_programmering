@@ -54,9 +54,9 @@ public class BallView extends View implements SensorEventListener
             mainAct.upDateValues(event.values);
 
             xMove += -event.values[0]/25;
-            xPos += xMove;
-
             yMove += event.values[1]/25;
+
+            xPos += xMove;
             yPos += yMove;
             invalidate();
 
