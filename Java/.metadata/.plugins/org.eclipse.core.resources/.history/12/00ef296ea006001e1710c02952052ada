@@ -1,0 +1,39 @@
+package dk.tec.jaj.example3;
+
+import java.sql.*;
+
+import dk.tec.jaj.Elev;
+
+public class DBTools {
+	
+	Connection con;
+	Statement stmt;
+	ResultSet set;
+	
+	//(LocalDb)\\MSSQLLocalDB
+	String connectionString = "jdbc.sqlServer://localHost; databaseName=MyApiDB;encrypt=true;trustServerCertificate=true";
+	
+	private void Connect() {
+		try {
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con = DriverManager.getConnection(connectionString,"sa", "Passw0rd");
+			stmt = con.createStatement();
+			System.out.print("Gik godt");
+			
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Elev getElevById(int id) {
+		Connect();
+		return null;
+	}
+	
+	public Elev getAllElev() {
+		Connect();
+		return null;
+	}
+}

@@ -1,0 +1,143 @@
+package dk.tec.Jozsef.PersonApi
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.codehaus.jackson.map.ObjectMapper;
+
+import dk.tec.Jozsef.AnalyzeRequest;
+import dk.tec.Jozsef.DBTools;
+import dk.tec.rfk.Person;
+
+
+@WebServlet(name = "WebApiServlet", urlPatterns = { "/WebApiServlet" })
+public class ApiServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+       
+
+//    public ApiServlet() {
+//        super();
+//        // TODO Auto-generated constructor stub
+//    }	
+
+	
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		DBTool dbTool = new DBTool();
+		
+		AnalyzeRequest analyze = new AnalyzeRequest(request.getPathInfo());
+		
+		switch (analyze.getLevel()) {
+		case MatchPersonID: {
+			//out.print("Match på Person og id: " + analyze.getId() + "<br/>");
+			Person person = dbTool.getPersonById(analyze.getId());
+			
+			out.print(mapper.writeValueAsString(person));
+			break;
+		}
+		case MatchPerson: {
+			//out.print("Match på Person");
+			List<Person> personList = dbTool.getAllPersons();
+			out.print(mapper.writeValueAsString(personList));
+			break;
+		}
+		case MatchNo: {
+			out.print("Ingen Personer fundet");
+			break;
+		}			
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + analyze.getLevel());
+		}
+		
+		
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
+	}
+
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		super.doPost(request, response);		
+
+		response.setCharacterEncoding("UTF-8");
+		response.setStatus(200);
+		
+		BufferedReader reader = request.getReader();
+		String jsonStr = reader.readLine();
+		System.out.println(jsonStr);
+		
+		ObjectMapper mapper = new ObjectMapper();
+		Person person = mapper.readValue(jsonStr, Person.class);
+		
+		System.out.print("Name: " + person.getName());
+		
+		DBTool dbTool = new DBTool();
+		dbTool.addPerson(person);
+	}
+
+
+	protected void doPut(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
+		ObjectMapper mapper = new ObjectMapper();
+		DBTool dbTool = new DBTool();
+		AnalyzeRequest analyze = new AnalyzeRequest(request.getPathInfo());
+		
+		switch (analyze.getLevel()) {
+		case MatchPersonID:
+			BufferedReader reader = request.getReader();
+			String jsonStr = reader.readLine();			
+
+			Person updatePerson = mapper.readValue(jsonStr, Person.class);
+			updatePerson.setId(analyze.getId());
+			dbTool.updatePerson(updatePerson);
+			out.print(mapper.writeValueAsString(updatePerson));
+			break;
+			
+		case MatchNo: {
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			break;
+		}
+
+		default:
+			throw new IllegalArgumentException("Unexpected value: " + analyze.getLevel());
+		}
+		
+		
+		response.setStatus(HttpServletResponse.SC_OK);
+	}
+
+
+	protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setCharacterEncoding("UTF-8");
+		DBTool dbTool = new DBTool();
+		
+		AnalyzeRequest analyze = new AnalyzeRequest(request.getPathInfo());
+		
+		switch (analyze.getLevel()) {
+		case MatchPersonID:
+			int id = analyze.getId();
+			dbTool.deletePersonById(id);
+			response.setStatus(HttpServletResponse.SC_OK);
+			break;
+
+		default:
+			response.setStatus(HttpServletResponse.SC_NOT_FOUND);
+			break;
+		}
+	}
+
+}

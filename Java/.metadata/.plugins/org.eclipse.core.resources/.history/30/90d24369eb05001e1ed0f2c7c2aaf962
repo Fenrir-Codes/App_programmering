@@ -1,0 +1,5 @@
+package dk.tec.jaj.example1;
+
+public enum Match {
+
+}

@@ -1,0 +1,58 @@
+package dk.tec.jaj.example2;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.List;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.codehaus.jackson.map.ObjectMapper;
+
+import dk.tec.jaj.AnalyseRequest;
+import dk.tec.jaj.Match;
+import dk.tec.jaj.Elev;
+
+
+//@WebServlet("/MyWebApi")
+public class MyWebApi extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
+	{
+		PrintWriter out = response.getWriter();
+		
+		AnalyseRequest analyze = new AnalyseRequest(request.getPathInfo());
+		
+		if(analyze.getLevel() == Match.MatchElevid) 
+		{
+			out.print("Match on Elev and Id: " + analyze.getId());
+		}
+		else if(analyze.getLevel() == Match.MatchElev) 
+		{
+			out.print("Match on Elev.");
+		}
+		else
+		{
+			out.print("No match!<br>");
+		}
+		
+		Elev E1 = new Elev(1000,"Martin",22, "McDonalds");
+		
+		List<Elev> elever = new ArrayList<Elev>();
+		elever.add(new Elev(1001, "Marko", 19, "blsblablajob"));
+		elever.add(new Elev(1002, "Julie", 40, "EjendomsService manager"));
+		
+		ObjectMapper mapper = new ObjectMapper();
+		
+		out.print(mapper.writeValueAsString(E1));
+		
+		
+	}
+
+
+}
